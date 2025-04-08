@@ -1,98 +1,123 @@
-const form = document.getElementById('thought-form');
-const thoughtText = document.getElementById('thought-text');
-const authorSelect = document.getElementById('author');
-const thoughtsList = document.getElementById('thoughts-list');
-const statusFill = document.getElementById('status-fill');
 
-const countdownDisplay = document.createElement('div');
-countdownDisplay.id = 'countdown';
-document.body.insertBefore(countdownDisplay, document.body.firstChild);
+document.addEventListener('DOMContentLoaded', async () => {
+  const db = window.db;
+  const thoughtsRef = firebase.firestore().collection("thoughts");
 
-let thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
-let reactions = JSON.parse(localStorage.getItem('reactions')) || [];
+  const form = document.getElementById("thought-form");
+  const input = document.getElementById("thought-input");
+  const container = document.getElementById("thoughts");
 
-function saveData() {
-    localStorage.setItem('thoughts', JSON.stringify(thoughts));
-    localStorage.setItem('reactions', JSON.stringify(reactions));
-}
+  const userSelect = document.getElementById("user");
+  const statusBar = document.getElementById("status-bar");
 
-function getAverageReaction() {
-    if (reactions.length === 0) return 0.5;
-    const total = reactions.reduce((a, b) => a + b, 0);
-    return total / (reactions.length * 4);
-}
+  // Estado base de la relación
+  
+  let status = 50;
 
-function updateStatusBar() {
-    const avg = getAverageReaction();
-    statusFill.style.width = (avg * 100) + '%';
-    const color = avg < 0.25 ? 'red' : avg < 0.5 ? 'orange' : avg < 0.75 ? 'yellowgreen' : 'green';
-    statusFill.style.background = color;
-}
+  // Escuchar cambios en el estado de la relación
+  firebase.firestore().collection("status").doc("relation").onSnapshot((doc) => {
+    if (doc.exists) {
+      status = doc.data().value;
+      updateStatusBar();
+    }
+  });
 
-function renderThoughts() {
-    thoughtsList.innerHTML = '';
-    thoughts.forEach((t, index) => {
-        const div = document.createElement('div');
-        div.className = 'thought';
-        div.innerHTML = `<strong>${t.author}:</strong> <p>${t.text}</p><small>${t.date}</small>`;
-        
-        const reactionsDiv = document.createElement('div');
-        reactionsDiv.className = 'reactions';
 
-        if (t.reacted) {
-            reactionsDiv.innerHTML = `<p><em>Ya reaccionaste a esta publicación.</em></p>`;
+  function updateStatusBar() {
+    statusBar.style.width = status + "%";
+    if (status < 30) {
+      statusBar.style.backgroundColor = "#ff4d4d";
+    } else if (status < 70) {
+      statusBar.style.backgroundColor = "#ffcc00";
+    } else {
+      statusBar.style.backgroundColor = "#4CAF50";
+    }
+  }
+
+  function renderThought(id, data) {
+    const thoughtDiv = document.createElement("div");
+    thoughtDiv.classList.add("thought");
+
+    const user = document.createElement("strong");
+    user.textContent = data.user + ": ";
+    thoughtDiv.appendChild(user);
+
+    const text = document.createElement("span");
+    text.textContent = data.text;
+    thoughtDiv.appendChild(text);
+
+    const timestamp = document.createElement("div");
+    timestamp.style.fontSize = "0.8em";
+    timestamp.style.color = "#888";
+    const date = new Date(data.timestamp);
+    timestamp.textContent = date.toLocaleString();
+    thoughtDiv.appendChild(timestamp);
+
+    const reactionDiv = document.createElement("div");
+    reactionDiv.classList.add("reactions");
+
+    const emojis = {
+      happy: "😊",
+      sad: "😢",
+      angry: "😠"
+    };
+
+    Object.entries(emojis).forEach(([key, emoji]) => {
+      const button = document.createElement("button");
+      button.textContent = emoji;
+      button.disabled = data.reaction ? true : false;
+      button.addEventListener("click", async () => {
+        if (!data.reaction) {
+          
+        await firebase.firestore().collection("thoughts").doc(id).update({ reaction: key });
+
+        let statusChange = 0;
+        if (key === "happy") statusChange = 10;
+        if (key === "sad") statusChange = -10;
+        if (key === "angry") statusChange = -20;
+
+        const statusRef = firebase.firestore().collection("status").doc("relation");
+        const currentStatusDoc = await statusRef.get();
+        let newValue = status;
+        if (currentStatusDoc.exists) {
+          newValue = Math.max(0, Math.min(100, currentStatusDoc.data().value + statusChange));
         } else {
-            ['😠','😢','😐','🙂','😍'].forEach((emoji, i) => {
-                const btn = document.createElement('span');
-                btn.className = 'reaction-btn';
-                btn.textContent = emoji;
-                btn.onclick = () => {
-                    reactions.push(i);
-                    thoughts[index].reacted = true;
-                    saveData();
-                    renderThoughts();
-                    updateStatusBar();
-                };
-                reactionsDiv.appendChild(btn);
-            });
+          newValue = Math.max(0, Math.min(100, 50 + statusChange));
         }
-
-        div.appendChild(reactionsDiv);
-        thoughtsList.appendChild(div);
+        await statusRef.set({ value: newValue });
+    
+        }
+      });
+      reactionDiv.appendChild(button);
     });
-}
 
-form.onsubmit = e => {
-    e.preventDefault();
-    const now = new Date();
-    const dateString = now.toLocaleDateString('es-ES') + ' ' + now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-    thoughts.push({ author: authorSelect.value, text: thoughtText.value, date: dateString, reacted: false });
-    thoughtText.value = '';
-    saveData();
-    renderThoughts();
-};
-
-// Cuenta regresiva de 31 días desde el 7 de abril de 2025
-function updateCountdown() {
-    const startDate = new Date('2025-04-07T00:00:00');
-    const now = new Date();
-    const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + 31);
-
-    const diffTime = endDate - now;
-    if (diffTime <= 0) {
-        countdownDisplay.textContent = "¡El tiempo terminó!";
-        return;
+    if (data.reaction) {
+      const reacted = document.createElement("div");
+      reacted.textContent = "Reacción: " + emojis[data.reaction];
+      reactionDiv.appendChild(reacted);
     }
 
-    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diffTime / (1000 * 60)) % 60);
+    thoughtDiv.appendChild(reactionDiv);
+    container.prepend(thoughtDiv);
+  }
 
-    countdownDisplay.textContent = `Quedan ${days} días, ${hours} horas y ${minutes} minutos.`;
-}
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const newThought = {
+      user: userSelect.value,
+      text: input.value,
+      timestamp: Date.now(),
+      reaction: null
+    };
+    await firebase.firestore().collection("thoughts").add(newThought);
+    input.value = "";
+  });
 
-setInterval(updateCountdown, 60000); // Actualiza cada minuto
-updateCountdown();
-renderThoughts();
-updateStatusBar();
+  firebase.firestore().collection("thoughts").orderBy("timestamp", "desc")
+    .onSnapshot((snapshot) => {
+      container.innerHTML = "";
+      snapshot.forEach((doc) => {
+        renderThought(doc.id, doc.data());
+      });
+    });
+});

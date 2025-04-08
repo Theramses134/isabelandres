@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relación Isabel y Andrés</title>
     <link rel="stylesheet" href="styles.css">
+
+<!-- Firebase SDK -->
+<script type="module">
+  // Import Firebase modules
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAE6KTe1IaFdyyfJQ-ZJzH7zhxeVhldM-c",
+    authDomain: "isabelandres-95b39.firebaseapp.com",
+    projectId: "isabelandres-95b39",
+    storageBucket: "isabelandres-95b39.appspot.com",
+    messagingSenderId: "268223199536",
+    appId: "1:268223199536:web:c240b62ff743fe3b9ab0f5",
+    measurementId: "G-X0GTRFCHB2"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window.firebaseApp = app;
+  window.db = db;
+</script>
+
 </head>
 <body>
     <header>
