@@ -1,126 +1,122 @@
-const form = document.getElementById('thought-form');
-const thoughtText = document.getElementById('thought-text');
-const authorSelect = document.getElementById('author');
-const thoughtsList = document.getElementById('thoughts-list');
-const statusFill = document.getElementById('status-fill');
-const countdownDisplay = document.getElementById('countdown');
+let estado = 0.5;
+let pensamientos = JSON.parse(localStorage.getItem("pensamientos") || "[]");
 
-let thoughts = JSON.parse(localStorage.getItem('thoughts')) || [];
-let reactions = JSON.parse(localStorage.getItem('reactions')) || [];
-
-function saveData() {
-    localStorage.setItem('thoughts', JSON.stringify(thoughts));
-    localStorage.setItem('reactions', JSON.stringify(reactions));
+function actualizarBarra() {
+    const barra = document.getElementById("barra-estado");
+    barra.style.width = (estado * 100) + "%";
+    barra.style.backgroundColor = estado < 0.3 ? "red" : estado < 0.6 ? "orange" : "green";
 }
 
-function getAverageReaction() {
-    if (reactions.length === 0) return 0.5;
-    const total = reactions.reduce((a, b) => a + b, 0);
-    return total / (reactions.length * 4);
+function publicar() {
+    const autor = document.getElementById("autor").value;
+    const texto = document.getElementById("pensamiento").value.trim();
+    if (!texto) return;
+    const nuevo = {
+        autor,
+        text: texto,
+        timestamp: new Date().toISOString(),
+        reaccion: null
+    };
+    pensamientos.push(nuevo);
+    localStorage.setItem("pensamientos", JSON.stringify(pensamientos));
+    document.getElementById("pensamiento").value = "";
+    renderizarPensamientos();
 }
 
-function updateStatusBar() {
-    const avg = getAverageReaction();
-    statusFill.style.width = (avg * 100) + '%';
-    const color = avg < 0.25 ? 'red' : avg < 0.5 ? 'orange' : avg < 0.75 ? 'yellowgreen' : 'green';
-    statusFill.style.background = color;
+function reaccionar(index, valor) {
+    if (pensamientos[index].reaccion !== null) return;
+    pensamientos[index].reaccion = valor;
+    estado = Math.max(0, Math.min(1, estado + valor));
+    localStorage.setItem("pensamientos", JSON.stringify(pensamientos));
+    actualizarBarra();
+    renderizarPensamientos();
 }
 
-function groupThoughtsByDate() {
-    return thoughts.reduce((acc, t) => {
-        const date = t.date.split(' ')[0];
-        if (!acc[date]) acc[date] = [];
-        acc[date].push(t);
-        return acc;
-    }, {});
-}
+function renderizarPensamientos() {
+    const contenedor = document.getElementById("pensamientos");
+    contenedor.innerHTML = "";
+    const agrupados = {};
 
-function renderThoughts() {
-    thoughtsList.innerHTML = '';
-    const sortedThoughts = [...thoughts].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
-    const grouped = groupThoughtsByDate();
-
-    Object.keys(grouped).sort((a, b) => new Date(b) - new Date(a)).forEach(date => {
-        const section = document.createElement('section');
-        const toggle = document.createElement('h3');
-        toggle.textContent = date;
-        toggle.className = 'collapsible';
-        toggle.onclick = () => content.classList.toggle('hidden');
-
-        const content = document.createElement('div');
-        content.className = 'thought-group';
-
-        grouped[date].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).forEach((t, index) => {
-            content.appendChild(createThoughtElement(t, index));
-        });
-
-        section.appendChild(toggle);
-        section.appendChild(content);
-        thoughtsList.appendChild(section);
+    pensamientos.slice().reverse().forEach((p, i) => {
+        const fecha = new Date(p.timestamp).toLocaleDateString('es-ES', { dateStyle: "full" });
+        if (!agrupados[fecha]) agrupados[fecha] = [];
+        agrupados[fecha].push({ ...p, idx: pensamientos.length - 1 - i });
     });
-}
 
-function createThoughtElement(t, index) {
-    const div = document.createElement('div');
-    div.className = 'thought';
-    div.innerHTML = `<strong>${t.author}:</strong> <p>${t.text}</p><small>${t.date}</small>`;
+    for (let dia in agrupados) {
+        const grupo = document.createElement("div");
+        grupo.className = "dia-grupo";
+        const toggle = document.createElement("button");
+        toggle.className = "toggle-dia";
+        toggle.textContent = dia;
+        const inner = document.createElement("div");
+        inner.style.display = "none";
 
-    const reactionsDiv = document.createElement('div');
-    reactionsDiv.className = 'reactions';
+        toggle.onclick = () => {
+            inner.style.display = inner.style.display === "none" ? "block" : "none";
+        };
 
-    if (t.reacted) {
-        reactionsDiv.innerHTML = `<p><em>Ya reaccionaste a esta publicación.</em></p>`;
-    } else {
-        ['😠','😢','😐','🙂','😍'].forEach((emoji, i) => {
-            const btn = document.createElement('span');
-            btn.className = 'reaction-btn';
-            btn.textContent = emoji;
-            btn.onclick = () => {
-                reactions.push(i);
-                thoughts.find(th => th.timestamp === t.timestamp).reacted = true;
-                saveData();
-                renderThoughts();
-                updateStatusBar();
-            };
-            reactionsDiv.appendChild(btn);
+        agrupados[dia].forEach(pens => {
+            const div = document.createElement("div");
+            div.className = "pensamiento";
+            const autor = document.createElement("strong");
+            autor.textContent = pens.autor + ": ";
+            const texto = document.createElement("span");
+            texto.textContent = pens.text;
+            const time = document.createElement("div");
+            time.className = "timestamp";
+            time.textContent = new Date(pens.timestamp).toLocaleString('es-ES');
+            const reacciones = document.createElement("div");
+            reacciones.className = "reacciones";
+
+            if (pens.reaccion === null) {
+                ["😡", "😢", "😊"].forEach((c, idx) => {
+                    const btn = document.createElement("button");
+                    btn.textContent = c;
+                    btn.onclick = () => reaccionar(pens.idx, [-0.2, -0.1, 0.1][idx]);
+                    reacciones.appendChild(btn);
+                });
+            } else {
+                const msg = document.createElement("div");
+                msg.textContent = "Reacción enviada.";
+                reacciones.appendChild(msg);
+            }
+
+            div.appendChild(autor);
+            div.appendChild(texto);
+            div.appendChild(time);
+            div.appendChild(reacciones);
+            inner.appendChild(div);
         });
-    }
 
-    div.appendChild(reactionsDiv);
-    return div;
+        grupo.appendChild(toggle);
+        grupo.appendChild(inner);
+        contenedor.appendChild(grupo);
+    }
 }
 
-form.onsubmit = e => {
-    e.preventDefault();
-    const now = new Date();
-    const dateString = now.toLocaleDateString('es-ES') + ' ' + now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
-    thoughts.push({ author: authorSelect.value, text: thoughtText.value, date: dateString, timestamp: now.toISOString(), reacted: false });
-    thoughtText.value = '';
-    saveData();
-    renderThoughts();
-};
+function iniciarContador() {
+    const fin = new Date();
+    fin.setDate(fin.getDate() + 31);
 
-// Cuenta regresiva de 31 días desde el 7 de abril de 2025
-function updateCountdown() {
-    const startDate = new Date('2025-04-07T00:00:00');
-    const now = new Date();
-    const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + 31);
-
-    const diffTime = endDate - now;
-    if (diffTime <= 0) {
-        countdownDisplay.textContent = "¡El tiempo terminó!";
-        return;
+    function actualizar() {
+        const ahora = new Date();
+        let delta = Math.max(0, fin - ahora);
+        const dias = Math.floor(delta / (1000 * 60 * 60 * 24));
+        delta %= (1000 * 60 * 60 * 24);
+        const horas = Math.floor(delta / (1000 * 60 * 60));
+        delta %= (1000 * 60 * 60);
+        const mins = Math.floor(delta / (1000 * 60));
+        document.getElementById("contador").textContent =
+            `Quedan ${dias} días, ${horas} horas y ${mins} minutos.`;
     }
 
-    const days = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diffTime / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diffTime / (1000 * 60)) % 60);
-
-    countdownDisplay.textContent = `Quedan ${days} días, ${hours} horas y ${minutes} minutos.`;
+    actualizar();
+    setInterval(actualizar, 60000);
 }
 
-setInterval(updateCountdown, 60000);
-updateCountdown();
-renderThoughts();
-updateStatusBar();
+document.addEventListener("DOMContentLoaded", () => {
+    actualizarBarra();
+    renderizarPensamientos();
+    iniciarContador();
+});

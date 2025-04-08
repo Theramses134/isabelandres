@@ -1,0 +1,83 @@
+body {
+    font-family: sans-serif;
+    background-color: #1b0f13;
+    color: white;
+    margin: 0;
+    padding: 1rem;
+}
+h1, h2 {
+    text-align: center;
+}
+.barra-container {
+    width: 80%;
+    background-color: #333;
+    height: 20px;
+    border-radius: 10px;
+    margin: 0 auto 1rem;
+}
+#barra-estado {
+    height: 100%;
+    width: 50%;
+    background-color: green;
+    border-radius: 10px;
+}
+.input-section {
+    max-width: 500px;
+    margin: 0 auto;
+}
+textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: #3b1920;
+    color: white;
+    border: none;
+}
+button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.7rem;
+    background-color: #b03060;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+.pensamiento {
+    background-color: #2a141a;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+.reacciones {
+    margin-top: 0.5rem;
+}
+.reacciones button {
+    margin-right: 5px;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+.timestamp {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 0.3rem;
+}
+.contador-container {
+    background-color: #3c0d23;
+    padding: 0.5rem;
+    text-align: center;
+    color: white;
+    margin-bottom: 1rem;
+    border: 1px solid #a02b5e;
+}
+.dia-grupo {
+    margin-top: 1rem;
+}
+.toggle-dia {
+    background-color: transparent;
+    color: #ff5fa2;
+    border: none;
+    font-size: 1rem;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
