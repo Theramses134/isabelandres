@@ -30,6 +30,27 @@
 
 </head>
 <body>
+
+<div id="countdown" style="text-align: center; font-size: 1.2em; color: #ffcccb; margin: 20px auto; font-weight: bold;"></div>
+<script>
+  const countdownElement = document.getElementById("countdown");
+  const endDate = new Date("2025-05-08T00:00:00");
+  function updateCountdown() {
+    const now = new Date();
+    const diff = endDate - now;
+    if (diff <= 0) {
+      countdownElement.textContent = "¡El tiempo ha terminado!";
+      return;
+    }
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    countdownElement.textContent = `Quedan ${days} días, ${hours} horas y ${minutes} minutos.`;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+
     <header>
         <h1>Estado de la Relación</h1>
         <div id="status-bar"><div id="status-fill"></div></div>
