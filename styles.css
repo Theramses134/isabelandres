@@ -2,11 +2,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #121212;
-    color: #f0f0f0;
+    background: #1a0d12;
+    color: #f8f0f5;
 }
 header {
-    background: #1e1e1e;
+    background: #2d0d18;
     padding: 1rem;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.6);
@@ -28,10 +28,10 @@ header {
 #countdown {
     text-align: center;
     padding: 1rem;
-    font-size: 1.2rem;
-    background: #1e1e1e;
-    color: #fdd835;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    font-size: 1.3rem;
+    background: #390d22;
+    color: #ff6f91;
+    font-weight: bold;
 }
 main {
     padding: 1rem;
@@ -45,25 +45,25 @@ textarea {
     resize: vertical;
     min-height: 60px;
     padding: 0.5rem;
-    background: #2c2c2c;
+    background: #3d1a28;
     color: #fff;
-    border: 1px solid #444;
+    border: 1px solid #5a2a3c;
 }
 button {
     padding: 0.5rem;
-    background: #4CAF50;
+    background: #a92d4c;
     color: white;
     border: none;
     border-radius: 5px;
 }
 select {
-    background: #2c2c2c;
+    background: #3d1a28;
     color: #fff;
-    border: 1px solid #444;
+    border: 1px solid #5a2a3c;
     padding: 0.3rem;
 }
 .thought {
-    background: #1f1f1f;
+    background: #2b0f1a;
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 8px;
@@ -80,4 +80,14 @@ select {
 }
 .reaction-btn:hover {
     transform: scale(1.2);
+}
+.collapsible {
+    cursor: pointer;
+    background-color: #5e1e36;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+}
+.thought-group.hidden {
+    display: none;
 }
