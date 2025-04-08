@@ -2,30 +2,35 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relación Isabel y Andrés</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="contador-container">
-        <div id="contador"></div>
-    </div>
-    <h1>Estado de la Relación</h1>
-    <div class="barra-container">
-        <div id="barra-estado"></div>
-    </div>
-    <div class="input-section">
-        <label for="autor">Escribe aquí</label>
-        <select id="autor">
-            <option value="Andrés">Andrés</option>
-            <option value="Isabel">Isabel</option>
-        </select>
-        <textarea id="pensamiento" placeholder="Escribe tu pensamiento aquí..."></textarea>
-        <button onclick="publicar()">Publicar</button>
-    </div>
-    <div id="pensamientos-container">
-        <h2>Pensamientos</h2>
-        <div id="pensamientos"></div>
-    </div>
+    <header>
+        <h1>Estado de la Relación</h1>
+        <div id="status-bar"><div id="status-fill"></div></div>
+    </header>
+
+    <main>
+        <section id="new-thought">
+            <h2>Escribe aquí</h2>
+            <form id="thought-form">
+                <select id="author">
+                    <option value="Andrés">Andrés</option>
+                    <option value="Isabel">Isabel</option>
+                </select>
+                <textarea id="thought-text" placeholder="Escribe tu pensamiento aquí..." required></textarea>
+                <button type="submit">Publicar</button>
+            </form>
+        </section>
+
+        <section id="thoughts">
+            <h2>Pensamientos</h2>
+            <div id="thoughts-list"></div>
+        </section>
+    </main>
+
     <script src="script.js"></script>
 </body>
 </html>
