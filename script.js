@@ -60,6 +60,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   onSnapshot(q, (snapshot) => {
     container.innerHTML = "";
+    if (snapshot.empty) {
+      const noThoughtsMsg = document.createElement("div");
+      noThoughtsMsg.textContent = "Aún no hay pensamientos publicados.";
+      noThoughtsMsg.style.color = "#aaa";
+      noThoughtsMsg.style.textAlign = "center";
+      noThoughtsMsg.style.marginTop = "20px";
+      container.appendChild(noThoughtsMsg);
+      return;
+    }
+
+    container.innerHTML = "";
     snapshot.forEach((docSnap) => {
       const data = docSnap.data();
       const id = docSnap.id;
@@ -127,4 +138,14 @@ document.addEventListener('DOMContentLoaded', async () => {
       container.appendChild(thoughtDiv);
     });
   });
+});
+
+window.addEventListener("error", function(event) {
+  const container = document.getElementById("thoughts");
+  const errorMsg = document.createElement("div");
+  errorMsg.textContent = "Error al conectar con Firebase. Intenta más tarde.";
+  errorMsg.style.color = "#ff6b6b";
+  errorMsg.style.textAlign = "center";
+  errorMsg.style.marginTop = "20px";
+  container.appendChild(errorMsg);
 });
