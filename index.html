@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relación Isabel y Andrés</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Estado de la Relación</h1>
+        <div id="status-bar"><div id="status-fill"></div></div>
+    </header>
+
+    <main>
+        <section id="new-thought">
+            <h2>Escribe aquí</h2>
+            <form id="thought-form">
+                <select id="author">
+                    <option value="Andrés">Andrés</option>
+                    <option value="Isabel">Isabel</option>
+                </select>
+                <textarea id="thought-text" placeholder="Escribe tu pensamiento aquí..." required></textarea>
+                <button type="submit">Publicar</button>
+            </form>
+        </section>
+
+        <section id="thoughts">
+            <h2>Pensamientos</h2>
+            <div id="thoughts-list"></div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
