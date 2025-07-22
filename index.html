@@ -1,80 +1,69 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relación Isabel y Andrés</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reto para Raquel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://i.imgur.com/XBS6YAd.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      backdrop-filter: blur(5px);
+    }
 
-<!-- Firebase SDK -->
-<script type="module">
-  // Import Firebase modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, onSnapshot, doc, updateDoc } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+    .app-container {
+      background-color: rgba(80, 0, 100, 0.75);
+      padding: 30px 25px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(200, 100, 255, 0.4);
+      max-width: 360px;
+      text-align: center;
+    }
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAE6KTe1IaFdyyfJQ-ZJzH7zhxeVhldM-c",
-    authDomain: "isabelandres-95b39.firebaseapp.com",
-    projectId: "isabelandres-95b39",
-    storageBucket: "isabelandres-95b39.appspot.com",
-    messagingSenderId: "268223199536",
-    appId: "1:268223199536:web:c240b62ff743fe3b9ab0f5",
-    measurementId: "G-X0GTRFCHB2"
-  };
+    h1 {
+      font-size: 1.8em;
+      color: #ffe4fe;
+      margin-bottom: 20px;
+    }
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  window.firebaseApp = app;
-  window.db = db;
-</script>
+    .challenge-card {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 15px;
+      font-size: 1.1em;
+      line-height: 1.5;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
 
+    .name-tag {
+      color: #ffccff;
+      font-weight: bold;
+    }
+
+    .label {
+      font-size: 0.9em;
+      color: #dab0f2;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
 <body>
-
-<div id="countdown" style="text-align: center; font-size: 1.2em; color: #ffcccb; margin: 20px auto; font-weight: bold;"></div>
-<script>
-  const countdownElement = document.getElementById("countdown");
-  const endDate = new Date("2025-05-08T00:00:00");
-  function updateCountdown() {
-    const now = new Date();
-    const diff = endDate - now;
-    if (diff <= 0) {
-      countdownElement.textContent = "¡El tiempo ha terminado!";
-      return;
-    }
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    countdownElement.textContent = `Quedan ${days} días, ${hours} horas y ${minutes} minutos.`;
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 60000);
-</script>
-
-    <header>
-        <h1>Estado de la Relación</h1>
-        <div id="status-bar"><div id="status-fill"></div></div>
-    </header>
-
-    <main>
-        <section id="new-thought">
-            <h2>Escribe aquí</h2>
-            <form id="thought-form">
-                <select id="author">
-                    <option value="Andrés">Andrés</option>
-                    <option value="Isabel">Isabel</option>
-                </select>
-                <textarea id="thought-text" placeholder="Escribe tu pensamiento aquí..." required></textarea>
-                <button type="submit">Publicar</button>
-            </form>
-        </section>
-
-        <section id="thoughts">
-            <h2>Pensamientos</h2>
-            <div id="thoughts-list"></div>
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+  <div class="app-container">
+    <h1>🎲 Reto del momento</h1>
+    <div class="challenge-card">
+      <div class="label">Para <span class="name-tag">Raquel</span></div>
+      <p><strong>Verdad:</strong> Si dieras tu cuerpo, ¿qué condiciones pondrías?</p>
+    </div>
+  </div>
 </body>
 </html>
