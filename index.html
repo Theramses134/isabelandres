@@ -1,69 +1,71 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reto para Raquel</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://i.imgur.com/XBS6YAd.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      backdrop-filter: blur(5px);
-    }
-
-    .app-container {
-      background-color: rgba(80, 0, 100, 0.75);
-      padding: 30px 25px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(200, 100, 255, 0.4);
-      max-width: 360px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 1.8em;
-      color: #ffe4fe;
-      margin-bottom: 20px;
-    }
-
-    .challenge-card {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 20px;
-      border-radius: 15px;
-      font-size: 1.1em;
-      line-height: 1.5;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .name-tag {
-      color: #ffccff;
-      font-weight: bold;
-    }
-
-    .label {
-      font-size: 0.9em;
-      color: #dab0f2;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Barber Swipe - Demo</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <div class="app-container">
-    <h1>🎲 Reto del momento</h1>
-    <div class="challenge-card">
-      <div class="label">Para <span class="name-tag">Raquel</span></div>
-      <p><strong>Verdad:</strong> Si dieras tu cuerpo, ¿qué condiciones pondrías?</p>
+<body class="bg-dark text-white">
+
+<div class="container py-4">
+  <header class="mb-4 text-center">
+    <h1 class="display-4 fw-bold" style="color: gold;">Barber Swipe</h1>
+    <p>Encuentra tu barbero ideal deslizando</p>
+    <button id="showListBtn" class="btn btn-outline-warning">Ver lista de barberos</button>
+    <button id="showSwipeBtn" class="btn btn-warning d-none">Modo Swipe</button>
+  </header>
+
+  <!-- Lista de barberos -->
+  <section id="barberList" class="d-none">
+    <div class="row" id="listContainer"></div>
+  </section>
+
+  <!-- Swipe container -->
+  <section id="swipeContainer" class="position-relative mx-auto" style="max-width: 400px; height: 500px;">
+    <!-- Tarjetas serán generadas con JS -->
+  </section>
+
+  <!-- Perfil modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="profileModalLabel"></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div id="profilePhotos" class="mb-3"></div>
+          <p id="profileDesc"></p>
+          <p><strong>Precio:</strong> <span id="profilePrice"></span></p>
+          <p><strong>Ubicación:</strong> <span id="profileLocation"></span></p>
+          <p><strong>Especialidades:</strong> <span id="profileSkills"></span></p>
+          <button id="reserveBtn" class="btn btn-warning w-100">Reservar</button>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Reserva modal -->
+  <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white">
+        <div class="modal-header">
+          <h5 class="modal-title" id="reserveModalLabel">Confirmar reserva</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Deseas confirmar tu reserva con <strong id="reserveBarberName"></strong>?</p>
+          <button id="confirmReserveBtn" class="btn btn-success w-100">Sí, reservar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
