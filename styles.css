@@ -1,1 +1,95 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+#swipeContainer {
+  perspective: 1500px;
+}
+
+.card-swipe {
+  position: absolute;
+  width: 100%;
+  height: 480px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+  background-color: #222;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.card-swipe img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.card-content h3 {
+  color: gold;
+  margin-bottom: 0.2rem;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  margin-bottom: 0.2rem;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+}
+
+.action-buttons button {
+  background-color: transparent;
+  border: 2px solid gold;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: gold;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.action-buttons button:hover {
+  background-color: gold;
+  color: black;
+}
+
+#barberList .card {
+  background-color: #222;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#barberList .card:hover {
+  transform: scale(1.05);
+}
+
+#profilePhotos img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 576px) {
+  #swipeContainer {
+    height: 420px;
+  }
+  .card-swipe {
+    height: 400px;
+  }
+}
