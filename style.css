@@ -1,4 +1,3 @@
-
 /* Estilos básicos */
 body {
   font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
@@ -9,7 +8,8 @@ body {
 }
 
 header {
-  background: linear-gradient(90deg, #ff4b5c, #ff886c);
+  /* Degradado de fondo en el header de izquierda a derecha */
+  background: linear-gradient(90deg, #1E2460, #E63244);
   color: white;
   padding: 10px 20px;
   text-align: center;
