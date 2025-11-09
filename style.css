@@ -5,6 +5,7 @@ body {
   padding: 0;
   box-sizing: border-box; /* Aseguramos que el padding y los márgenes no afecten el tamaño */
   background-color: #f4f4f4;
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
 }
 
 header {
