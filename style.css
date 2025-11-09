@@ -1,118 +1,186 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Estilos básicos */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
+  font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Aseguramos que el padding y los márgenes no afecten el tamaño */
+  background-color: #f4f4f4;
+  overflow-x: hidden; /* Evita el desbordamiento horizontal */
 }
 
-/* -------- HEADER ---------- */
-.header {
-    background: linear-gradient(to right, #1E2460, #3e2579, #E63244);
-    padding: 20px;
-    display: flex;
-    justify-content: flex-start;
+header {
+  /* Degradado de fondo en el header de izquierda a derecha */
+  background: linear-gradient(90deg, #3e2579, #E63244); /* Cambié el morado a #3e2579 */
+  color: white;
+  padding: 10px 20px;
+  text-align: left; /* Alineamos el texto a la izquierda */
+  font-size: 1.5em; /* Reducimos el tamaño de la fuente */
+  font-weight: bold;
 }
 
-nav a {
-    color: white;
-    margin-right: 25px;
-    font-weight: bold;
-    font-size: 18px;
-    text-decoration: none;
+header nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: flex-start; /* Alineamos la navegación a la izquierda */
 }
 
-/* -------- LOGO ---------- */
+header nav ul li {
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Logo debajo del degradado */
 .logo-container {
-    text-align: center;
-    background-color: white;
-    padding: 10px 0;
+  background-color: white;
+  padding: 20px 0; /* Añadimos un poco de espacio arriba y abajo */
+  text-align: center;
 }
 
-.logo {
-    width: 70%;
-    max-width: 350px;
+.logo-container img.logo {
+  max-width: 300px; /* Ajustamos el tamaño del logo */
+  height: auto; /* Mantener la proporción original */
+  display: inline-block; /* Mantenemos el logo centrado */
 }
 
-/* -------- TITULAR ---------- */
-.titular {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 26px;
-    font-weight: bold;
+/* Estilos para el nombre del titular */
+.user-info {
+  text-align: left;
+  margin-top: 20px;
+  padding-left: 20px;
 }
 
-/* -------- BOTÓN ETICKETS ---------- */
-.boton-container {
-    display: flex;
-    justify-content: center;
+.user-name {
+  font-size: 1.5em;
+  font-weight: bold;
 }
 
-.btn-eticket {
-    background-color: #3e2579;
-    border: none;
-    padding: 12px;
-    width: 90%;
-    max-width: 380px;
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 8px;
+.user-dni {
+  font-size: 1.1em;
+  font-weight: normal;
+  margin-top: 5px;
 }
 
-/* -------- TICKETS ---------- */
+/* Estilos para el botón eTickets */
+.etickets-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.etickets-button {
+  background-color: #3e2579; /* Cambié el morado a #3e2579 */
+  color: white;
+  border: none;
+  padding: 14px 0; /* Ajusté la altura para hacerlo más grande */
+  width: 100%; /* El botón ahora toma todo el ancho disponible */
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-sizing: border-box; /* Aseguramos que el padding no afecte el ancho */
+}
+
+.etickets-button:hover {
+  background-color: #E63244; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para la sección principal */
+main {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Aseguramos que el main tome el 100% del ancho */
+}
+
+/* Contenedor de los detalles de orden, ajustado para apilar verticalmente */
 .ticket-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding: 15px;
+  display: flex;
+  flex-direction: column; /* Apilar las secciones verticalmente */
+  gap: 20px; /* Espacio entre los detalles de orden */
+  width: 100%; /* Aseguramos que ocupe todo el ancho disponible */
 }
 
 .ticket-info {
-    background: white;
-    width: 95%;
-    max-width: 850px;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.15);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.ticket-details {
+  font-family: 'Roboto Mono', monospace; /* Fuente monoespaciada */
 }
 
-td {
-    padding: 10px;
-    font-size: 18px;
+.ticket-details table {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-td strong {
-    color: black;
+.ticket-details table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 1em;
+  color: #333; /* Aseguramos que todas las celdas tengan el mismo color */
 }
 
-/* la parte derecha en gris */
-td.value {
-    color: #b4b4b4;
-    text-align: right;
+.ticket-details table td:first-child {
+  font-weight: bold;
 }
 
+/* Ajuste para la fila "Disponible a partir del" */
 .available-date {
-    text-align: center;
-    background: #fafafa;
-    padding: 12px;
-    border-radius: 6px;
-    margin-top: 8px;
+  text-align: center; /* Centramos el texto */
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 10px 0;
+  background-color: #f9f9f9; /* Un fondo suave para diferenciarlo */
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
-/* -------- FOOTER ---------- */
+/* Estilos del pie de página */
 footer {
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  header {
+    font-size: 1.2em;
+  }
+
+  .ticket-info {
+    padding: 10px;
+  }
+
+  .ticket-details table td {
+    padding: 8px;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+
+  /* Ajustamos el botón para que se vea bien en móviles */
+  .etickets-button {
+    font-size: 1.2em; /* Aumentamos ligeramente el tamaño de la fuente */
+  }
+
+  /* Aseguramos que no haya desbordamiento en la pantalla */
+  body {
+    overflow-x: hidden;
+  }
 }
