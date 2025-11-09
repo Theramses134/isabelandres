@@ -1,71 +1,114 @@
-<main>
-  <div class="ticket-container">
-    <!-- Primer detalle de orden -->
-    <section class="ticket-info">
-      <div class="ticket-details">
-        <table>
-          <tr>
-            <td><strong>N° de Orden</strong></td>
-            <td>22100639</td>
-          </tr>
-          <tr>
-            <td><strong>Evento</strong></td>
-            <td>SIN BANDERA 25 AÑOS ESCENAS TOUR</td>
-          </tr>
-          <tr>
-            <td><strong>Fecha</strong></td>
-            <td>28/03/2026</td>
-          </tr>
-          <tr>
-            <td><strong>Recinto</strong></td>
-            <td>MULTIESPACIO COSTA 21</td>
-          </tr>
-          <tr>
-            <td><strong>Tipo Ticket</strong></td>
-            <td>ZONA 25 AÑOS Fila: 12 Asiento: 65</td> <!-- Asiento 65 para el primer ticket -->
-          </tr>
-          <!-- Disponible a partir del - Unificar en un solo bloque -->
-          <tr>
-            <td colspan="2" class="available-date">
-              <strong>Disponible a partir del:</strong> 10/02/2026
-            </td>
-          </tr>
-        </table>
-      </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleticket - Tickets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HEADER CON DEGRADADO -->
+    <header class="header">
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Punto Ticket</a>
+        </nav>
+    </header>
+
+    <!-- LOGO -->
+    <section class="logo-container">
+        <img src="assets/logo.png" alt="Teleticket Logo" class="logo">
     </section>
 
-    <!-- Segundo detalle de orden con datos actualizados -->
-    <section class="ticket-info">
-      <div class="ticket-details">
-        <table>
-          <tr>
-            <td><strong>N° de Orden</strong></td>
-            <td>22100640</td> <!-- Número de orden correlativo -->
-          </tr>
-          <tr>
-            <td><strong>Evento</strong></td>
-            <td>SIN BANDERA 25 AÑOS ESCENAS TOUR</td>
-          </tr>
-          <tr>
-            <td><strong>Fecha</strong></td>
-            <td>28/03/2026</td>
-          </tr>
-          <tr>
-            <td><strong>Recinto</strong></td>
-            <td>MULTIESPACIO COSTA 21</td>
-          </tr>
-          <tr>
-            <td><strong>Tipo Ticket</strong></td>
-            <td>ZONA 25 AÑOS Fila: 12 Asiento: 66</td> <!-- Asiento 66 para el segundo ticket -->
-          </tr>
-          <!-- Disponible a partir del - Unificar en un solo bloque -->
-          <tr>
-            <td colspan="2" class="available-date">
-              <strong>Disponible a partir del:</strong> 10/02/2026
-            </td>
-          </tr>
-        </table>
-      </div>
-    </section>
-  </div>
-</main>
+    <!-- NOMBRE DEL TITULAR -->
+    <h2 class="titular">Saray Vargas</h2>
+
+    <!-- BOTÓN ETICKETS -->
+    <div class="boton-container">
+        <button class="btn-eticket">ETICKETS</button>
+    </div>
+
+    <!-- BLOQUE DE TICKETS -->
+    <main>
+        <div class="ticket-container">
+
+            <!-- PRIMER TICKET -->
+            <section class="ticket-info">
+                <div class="ticket-details">
+                    <table>
+                        <tr>
+                            <td><strong>N° de Orden</strong></td>
+                            <td class="value">22100639</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Evento</strong></td>
+                            <td class="value">SIN BANDERA 25 AÑOS ESCENAS TOUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fecha</strong></td>
+                            <td class="value">28/03/2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recinto</strong></td>
+                            <td class="value">MULTIESPACIO COSTA 21</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo Ticket</strong></td>
+                            <td class="value">ZONA 25 AÑOS Fila: 12 Asiento: 65</td>
+                        </tr>
+
+                        <!-- FECHA DISPONIBLE EN UNA SOLA CELDA -->
+                        <tr>
+                            <td colspan="2" class="available-date">
+                                <strong>Disponible a partir del:</strong> 10/02/2026
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SEGUNDO TICKET -->
+            <section class="ticket-info">
+                <div class="ticket-details">
+                    <table>
+                        <tr>
+                            <td><strong>N° de Orden</strong></td>
+                            <td class="value">22100640</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Evento</strong></td>
+                            <td class="value">SIN BANDERA 25 AÑOS ESCENAS TOUR</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fecha</strong></td>
+                            <td class="value">28/03/2026</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recinto</strong></td>
+                            <td class="value">MULTIESPACIO COSTA 21</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo Ticket</strong></td>
+                            <td class="value">ZONA 25 AÑOS Fila: 12 Asiento: 66</td>
+                        </tr>
+
+                        <!-- FECHA DISPONIBLE EN UNA SOLA CELDA -->
+                        <tr>
+                            <td colspan="2" class="available-date">
+                                <strong>Disponible a partir del:</strong> 10/02/2026
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Teleticket
+    </footer>
+
+</body>
+</html>
