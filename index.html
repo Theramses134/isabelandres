@@ -1,71 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Barber Swipe - Demo</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teleticket - Evento</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-dark text-white">
-
-<div class="container py-4">
-  <header class="mb-4 text-center">
-    <h1 class="display-4 fw-bold" style="color: gold;">Barber Swipe</h1>
-    <p>Encuentra tu barbero ideal deslizando</p>
-    <button id="showListBtn" class="btn btn-outline-warning">Ver lista de barberos</button>
-    <button id="showSwipeBtn" class="btn btn-warning d-none">Modo Swipe</button>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Punto Ticket</a></li>
+      </ul>
+    </nav>
+    <h1>TELETICKET</h1>
   </header>
 
-  <!-- Lista de barberos -->
-  <section id="barberList" class="d-none">
-    <div class="row" id="listContainer"></div>
-  </section>
-
-  <!-- Swipe container -->
-  <section id="swipeContainer" class="position-relative mx-auto" style="max-width: 400px; height: 500px;">
-    <!-- Tarjetas serán generadas con JS -->
-  </section>
-
-  <!-- Perfil modal -->
-  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark text-white">
-        <div class="modal-header">
-          <h5 class="modal-title" id="profileModalLabel"></h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <div id="profilePhotos" class="mb-3"></div>
-          <p id="profileDesc"></p>
-          <p><strong>Precio:</strong> <span id="profilePrice"></span></p>
-          <p><strong>Ubicación:</strong> <span id="profileLocation"></span></p>
-          <p><strong>Especialidades:</strong> <span id="profileSkills"></span></p>
-          <button id="reserveBtn" class="btn btn-warning w-100">Reservar</button>
-        </div>
+  <main>
+    <section class="ticket-info">
+      <div class="user">
+        <p>Saray Vargas</p>
       </div>
-    </div>
-  </div>
 
-  <!-- Reserva modal -->
-  <div class="modal fade" id="reserveModal" tabindex="-1" aria-labelledby="reserveModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content bg-dark text-white">
-        <div class="modal-header">
-          <h5 class="modal-title" id="reserveModalLabel">Confirmar reserva</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-          <p>¿Deseas confirmar tu reserva con <strong id="reserveBarberName"></strong>?</p>
-          <button id="confirmReserveBtn" class="btn btn-success w-100">Sí, reservar</button>
-        </div>
+      <div class="ticket-details">
+        <table>
+          <tr>
+            <td><strong>N° de Orden</strong></td>
+            <td>123456</td>
+          </tr>
+          <tr>
+            <td><strong>Evento</strong></td>
+            <td>SHAKIRA EN LIMA</td>
+          </tr>
+          <tr>
+            <td><strong>Fecha</strong></td>
+            <td>18/11/2025</td>
+          </tr>
+          <tr>
+            <td><strong>Recinto</strong></td>
+            <td>Estadio Nacional</td>
+          </tr>
+          <tr>
+            <td><strong>Tipo Ticket</strong></td>
+            <td>TRIBUNA ORIENTE Fila: 21 Asiento: 26</td>
+          </tr>
+          <tr>
+            <td><strong>Disponible a partir del</strong></td>
+            <td>16/11/2025</td>
+          </tr>
+        </table>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
+  <footer>
+    <p>&copy; 2025 Teleticket</p>
+  </footer>
 </body>
 </html>
