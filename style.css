@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Aseguramos que el padding y los márgenes no afecten el tamaño */
   background-color: #f4f4f4;
 }
 
@@ -85,6 +85,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%; /* Aseguramos que el main tome el 100% del ancho */
 }
 
 /* Contenedor de los detalles de orden, ajustado para apilar verticalmente */
@@ -92,6 +93,7 @@ main {
   display: flex;
   flex-direction: column; /* Apilar las secciones verticalmente */
   gap: 20px; /* Espacio entre los detalles de orden */
+  width: 100%; /* Aseguramos que ocupe todo el ancho disponible */
 }
 
 .ticket-info {
@@ -146,5 +148,15 @@ footer {
 
   footer {
     font-size: 0.8em;
+  }
+
+  /* Ajustamos el botón para que se vea bien en móviles */
+  .etickets-button {
+    font-size: 1.2em; /* Aumentamos ligeramente el tamaño de la fuente */
+  }
+
+  /* Aseguramos que no haya desbordamiento en la pantalla */
+  body {
+    overflow-x: hidden;
   }
 }
