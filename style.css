@@ -12,19 +12,20 @@ header {
   background: linear-gradient(90deg, #1E2460, #E63244); 
   color: white;
   padding: 10px 20px;
-  text-align: center;
-  font-size: 2em;
+  text-align: left; /* Alineamos el texto a la izquierda */
+  font-size: 1.5em; /* Reducimos el tamaño de la fuente */
+  font-weight: bold;
 }
 
 header nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start; /* Alineamos la navegación a la izquierda */
 }
 
 header nav ul li {
-  margin-left: 20px;
+  margin-right: 20px;
 }
 
 header nav ul li a {
@@ -33,12 +34,17 @@ header nav ul li a {
   font-weight: bold;
 }
 
-/* Estilos para el logo en el header */
-header img.logo {
-  max-width: 200px; /* Ajusta el tamaño del logo según lo necesites */
+/* Logo debajo del degradado */
+.logo-container {
+  background-color: white;
+  padding: 20px 0; /* Añadimos un poco de espacio arriba y abajo */
+  text-align: center;
+}
+
+.logo-container img.logo {
+  max-width: 300px; /* Ajustamos el tamaño del logo */
   height: auto; /* Mantener la proporción original */
-  display: block; /* Elimina el espacio debajo de la imagen */
-  margin: 0 auto; /* Centrar la imagen */
+  display: inline-block; /* Mantenemos el logo centrado */
 }
 
 /* Estilos para la sección principal */
@@ -88,7 +94,7 @@ footer {
 /* Responsividad */
 @media (max-width: 768px) {
   header {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
 
   .ticket-info {
