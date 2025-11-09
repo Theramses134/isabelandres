@@ -55,6 +55,28 @@ header nav ul li a {
   font-weight: bold;
 }
 
+/* Estilos para el botón eTickets */
+.etickets-button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.etickets-button {
+  background-color: #1E2460; /* Color morado similar al degradado */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1em;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.etickets-button:hover {
+  background-color: #E63244; /* Cambio de color al pasar el mouse */
+}
+
 /* Estilos para la sección principal */
 main {
   padding: 20px;
@@ -112,15 +134,4 @@ footer {
     font-size: 1.2em;
   }
 
-  .ticket-info {
-    padding: 10px;
-  }
-
-  .ticket-details table td {
-    padding: 8px;
-  }
-
-  footer {
-    font-size: 0.8em;
-  }
-}
+  .ticket
