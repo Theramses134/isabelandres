@@ -1,55 +1,71 @@
-
 /* Estilos básicos */
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
+  font-family: 'Roboto', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Aseguramos que el padding y los márgenes no afecten el tamaño */
+  box-sizing: border-box;
   background-color: #f4f4f4;
-  overflow-x: hidden; /* Evita el desbordamiento horizontal */
 }
 
 header {
-  /* Degradado de fondo en el header de izquierda a derecha */
-  background: linear-gradient(90deg, #3e2579, #E63244); /* Cambié el morado a #3e2579 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #3e2579, #E63244); /* Degradado */
   color: white;
   padding: 10px 20px;
-  text-align: left; /* Alineamos el texto a la izquierda */
-  font-size: 1.5em; /* Reducimos el tamaño de la fuente */
-  font-weight: bold;
 }
 
-header nav ul {
-  list-style: none;
-  padding: 0;
+.header-left {
+  flex: 1;
+}
+
+.logo {
+  max-width: 120px; /* Ajustar tamaño del logo */
+}
+
+.header-middle {
+  flex: 2;
   display: flex;
-  justify-content: flex-start; /* Alineamos la navegación a la izquierda */
+  justify-content: center;
 }
 
-header nav ul li {
-  margin-right: 20px;
+.search-bar {
+  width: 80%;
+  padding: 8px;
+  border: none;
+  border-radius: 25px;
 }
 
-header nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
 }
 
-/* Logo debajo del degradado */
-.logo-container {
-  background-color: white;
-  padding: 20px 0; /* Añadimos un poco de espacio arriba y abajo */
-  text-align: center;
+.search-button img {
+  width: 20px;
+  height: 20px;
 }
 
-.logo-container img.logo {
-  max-width: 300px; /* Ajustamos el tamaño del logo */
-  height: auto; /* Mantener la proporción original */
-  display: inline-block; /* Mantenemos el logo centrado */
+.header-right {
+  flex: 1;
+  text-align: right;
 }
 
-/* Estilos para el nombre del titular */
+.menu-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-button img {
+  width: 25px;
+  height: 25px;
+}
+
+/* Ajustes para el nombre del titular y el DNI */
 .user-info {
   text-align: left;
   margin-top: 20px;
@@ -74,38 +90,36 @@ header nav ul li a {
 }
 
 .etickets-button {
-  background-color: #3e2579; /* Cambié el morado a #3e2579 */
+  background-color: #3e2579;
   color: white;
   border: none;
-  padding: 14px 0; /* Ajusté la altura para hacerlo más grande */
-  width: 100%; /* El botón ahora toma todo el ancho disponible */
+  padding: 14px 0;
+  width: 100%;
   font-size: 1em;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  box-sizing: border-box; /* Aseguramos que el padding no afecte el ancho */
 }
 
 .etickets-button:hover {
-  background-color: #E63244; /* Cambio de color al pasar el mouse */
+  background-color: #E63244;
 }
 
-/* Estilos para la sección principal */
 main {
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Aseguramos que el main tome el 100% del ancho */
+  width: 100%;
 }
 
-/* Contenedor de los detalles de orden, ajustado para apilar verticalmente */
+/* Contenedor de los detalles de orden */
 .ticket-container {
   display: flex;
-  flex-direction: column; /* Apilar las secciones verticalmente */
-  gap: 20px; /* Espacio entre los detalles de orden */
-  width: 100%; /* Aseguramos que ocupe todo el ancho disponible */
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 .ticket-info {
@@ -118,7 +132,7 @@ main {
 }
 
 .ticket-details {
-  font-family: 'Roboto Mono', monospace; /* Fuente monoespaciada */
+  font-family: 'Roboto Mono', monospace;
 }
 
 .ticket-details table {
@@ -130,25 +144,23 @@ main {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   font-size: 1em;
-  color: #333; /* Aseguramos que todas las celdas tengan el mismo color */
+  color: #333;
 }
 
 .ticket-details table td:first-child {
   font-weight: bold;
 }
 
-/* Ajuste para la fila "Disponible a partir del" */
 .available-date {
-  text-align: center; /* Centramos el texto */
+  text-align: center;
   font-weight: bold;
   font-size: 1.1em;
   padding: 10px 0;
-  background-color: #f9f9f9; /* Un fondo suave para diferenciarlo */
+  background-color: #f9f9f9;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 
-/* Estilos del pie de página */
 footer {
   background-color: #333;
   color: white;
@@ -174,13 +186,12 @@ footer {
     font-size: 0.8em;
   }
 
-  /* Ajustamos el botón para que se vea bien en móviles */
-  .etickets-button {
-    font-size: 1.2em; /* Aumentamos ligeramente el tamaño de la fuente */
+  .search-bar {
+    width: 70%;
   }
 
-  /* Aseguramos que no haya desbordamiento en la pantalla */
-  body {
-    overflow-x: hidden;
+  .search-button img {
+    width: 18px;
+    height: 18px;
   }
 }
