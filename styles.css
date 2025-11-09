@@ -1,95 +1,91 @@
+/* Estilos básicos */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f4f4;
 }
 
-#swipeContainer {
-  perspective: 1500px;
-}
-
-.card-swipe {
-  position: absolute;
-  width: 100%;
-  height: 480px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
-  background-color: #222;
-  overflow: hidden;
-  cursor: grab;
-  user-select: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  display: flex;
-  flex-direction: column;
+header {
+  background: linear-gradient(90deg, #ff4b5c, #ff886c);
   color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 2em;
 }
 
-.card-swipe img {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 1rem;
-  flex-grow: 1;
-}
-
-.card-content h3 {
-  color: gold;
-  margin-bottom: 0.2rem;
-}
-
-.card-content p {
-  font-size: 0.9rem;
-  margin-bottom: 0.2rem;
-}
-
-.action-buttons {
+header nav ul {
+  list-style: none;
+  padding: 0;
   display: flex;
-  justify-content: space-around;
-  padding: 0.5rem 0;
+  justify-content: flex-end;
 }
 
-.action-buttons button {
-  background-color: transparent;
-  border: 2px solid gold;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: gold;
-  font-size: 1.4rem;
-  line-height: 1;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+header nav ul li {
+  margin-left: 20px;
 }
 
-.action-buttons button:hover {
-  background-color: gold;
-  color: black;
-}
-
-#barberList .card {
-  background-color: #222;
-  border: none;
+header nav ul li a {
   color: white;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-#barberList .card:hover {
-  transform: scale(1.05);
+/* Estilos para la sección principal */
+main {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#profilePhotos img {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
+.ticket-info {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
 }
 
-@media (max-width: 576px) {
-  #swipeContainer {
-    height: 420px;
+.ticket-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ticket-details table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.ticket-details table td:first-child {
+  font-weight: bold;
+}
+
+/* Estilos del pie de página */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  header {
+    font-size: 1.5em;
   }
-  .card-swipe {
-    height: 400px;
+
+  .ticket-info {
+    padding: 10px;
+  }
+
+  .ticket-details table td {
+    padding: 8px;
+  }
+
+  footer {
+    font-size: 0.8em;
   }
 }
