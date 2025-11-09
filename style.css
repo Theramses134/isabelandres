@@ -1,6 +1,7 @@
+
 /* Estilos básicos */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -49,6 +50,10 @@ main {
   padding: 20px;
 }
 
+.ticket-details {
+  font-family: 'Roboto Mono', monospace; /* Fuente monoespaciada */
+}
+
 .ticket-details table {
   width: 100%;
   border-collapse: collapse;
@@ -57,6 +62,7 @@ main {
 .ticket-details table td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
+  font-size: 1em;
 }
 
 .ticket-details table td:first-child {
