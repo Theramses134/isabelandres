@@ -9,7 +9,7 @@ body {
 
 header {
   /* Degradado de fondo en el header de izquierda a derecha */
-  background: linear-gradient(90deg, #1E2460, #E63244);
+  background: linear-gradient(90deg, #1E2460, #E63244); 
   color: white;
   padding: 10px 20px;
   text-align: center;
@@ -31,6 +31,14 @@ header nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+}
+
+/* Estilos para el logo en el header */
+header img.logo {
+  max-width: 200px; /* Ajusta el tamaño del logo según lo necesites */
+  height: auto; /* Mantener la proporción original */
+  display: block; /* Elimina el espacio debajo de la imagen */
+  margin: 0 auto; /* Centrar la imagen */
 }
 
 /* Estilos para la sección principal */
