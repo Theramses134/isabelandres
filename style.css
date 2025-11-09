@@ -9,7 +9,7 @@ body {
 
 header {
   /* Degradado de fondo en el header de izquierda a derecha */
-  background: linear-gradient(90deg, #1E2460, #E63244); 
+  background: linear-gradient(90deg, #3e2579, #E63244); /* Cambié el morado a #3e2579 */
   color: white;
   padding: 10px 20px;
   text-align: left; /* Alineamos el texto a la izquierda */
@@ -62,15 +62,17 @@ header nav ul li a {
 }
 
 .etickets-button {
-  background-color: #1E2460; /* Color morado similar al degradado */
+  background-color: #3e2579; /* Cambié el morado a #3e2579 */
   color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 14px 0; /* Ajusté la altura para hacerlo más grande */
+  width: 100%; /* El botón ahora toma todo el ancho disponible */
   font-size: 1em;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  box-sizing: border-box; /* Aseguramos que el padding no afecte el ancho */
 }
 
 .etickets-button:hover {
@@ -134,4 +136,15 @@ footer {
     font-size: 1.2em;
   }
 
-  .ticket
+  .ticket-info {
+    padding: 10px;
+  }
+
+  .ticket-details table td {
+    padding: 8px;
+  }
+
+  footer {
+    font-size: 0.8em;
+  }
+}
