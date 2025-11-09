@@ -119,10 +119,22 @@ main {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   font-size: 1em;
+  color: #333; /* Aseguramos que todas las celdas tengan el mismo color */
 }
 
 .ticket-details table td:first-child {
   font-weight: bold;
+}
+
+/* Ajuste para la fila "Disponible a partir del" */
+.available-date {
+  text-align: center; /* Centramos el texto */
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 10px 0;
+  background-color: #f9f9f9; /* Un fondo suave para diferenciarlo */
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 
 /* Estilos del pie de página */
