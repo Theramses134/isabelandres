@@ -1,185 +1,26 @@
-/* Estilos básicos */
 body {
-  font-family: 'Roboto', Arial, sans-serif; /* Fuente principal */
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; /* Aseguramos que el padding y los márgenes no afecten el tamaño */
-  background-color: #f4f4f4;
-  overflow-x: hidden; /* Evita el desbordamiento horizontal */
-}
-
-header {
-  /* Degradado de fondo en el header de izquierda a derecha */
-  background: linear-gradient(90deg, #3e2579, #E63244); /* Cambié el morado a #3e2579 */
-  color: white;
-  padding: 10px 20px;
-  text-align: left; /* Alineamos el texto a la izquierda */
-  font-size: 1.5em; /* Reducimos el tamaño de la fuente */
-  font-weight: bold;
-}
-
-header nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: flex-start; /* Alineamos la navegación a la izquierda */
-}
-
-header nav ul li {
-  margin-right: 20px;
-}
-
-header nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Logo debajo del degradado */
-.logo-container {
-  background-color: white;
-  padding: 20px 0; /* Añadimos un poco de espacio arriba y abajo */
-  text-align: center;
-}
-
-.logo-container img.logo {
-  max-width: 300px; /* Ajustamos el tamaño del logo */
-  height: auto; /* Mantener la proporción original */
-  display: inline-block; /* Mantenemos el logo centrado */
-}
-
-/* Estilos para el nombre del titular */
-.user-info {
-  text-align: left;
-  margin-top: 20px;
-  padding-left: 20px;
-}
-
-.user-name {
-  font-size: 1.5em;
-  font-weight: bold;
-}
-
-.user-dni {
-  font-size: 1.1em;
-  font-weight: normal;
-  margin-top: 5px;
-}
-
-/* Estilos para el botón eTickets */
-.etickets-button-container {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.etickets-button {
-  background-color: #3e2579; /* Cambié el morado a #3e2579 */
-  color: white;
-  border: none;
-  padding: 14px 0; /* Ajusté la altura para hacerlo más grande */
-  width: 100%; /* El botón ahora toma todo el ancho disponible */
-  font-size: 1em;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-sizing: border-box; /* Aseguramos que el padding no afecte el ancho */
-}
-
-.etickets-button:hover {
-  background-color: #E63244; /* Cambio de color al pasar el mouse */
-}
-
-/* Estilos para la sección principal */
-main {
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Aseguramos que el main tome el 100% del ancho */
+  margin: 0;
 }
 
-/* Contenedor de los detalles de orden, ajustado para apilar verticalmente */
-.ticket-container {
-  display: flex;
-  flex-direction: column; /* Apilar las secciones verticalmente */
-  gap: 20px; /* Espacio entre los detalles de orden */
-  width: 100%; /* Aseguramos que ocupe todo el ancho disponible */
-}
-
-.ticket-info {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 600px;
-  padding: 20px;
-}
-
-.ticket-details {
-  font-family: 'Roboto Mono', monospace; /* Fuente monoespaciada */
-}
-
-.ticket-details table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.ticket-details table td {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-  font-size: 1em;
-  color: #333; /* Aseguramos que todas las celdas tengan el mismo color */
-}
-
-.ticket-details table td:first-child {
-  font-weight: bold;
-}
-
-/* Ajuste para la fila "Disponible a partir del" */
-.available-date {
-  text-align: center; /* Centramos el texto */
-  font-weight: bold;
-  font-size: 1.1em;
-  padding: 10px 0;
-  background-color: #f9f9f9; /* Un fondo suave para diferenciarlo */
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Estilos del pie de página */
-footer {
-  background-color: #333;
-  color: white;
+.card {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
   text-align: center;
-  padding: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Responsividad */
-@media (max-width: 768px) {
-  header {
-    font-size: 1.2em;
-  }
+h1 {
+  margin-bottom: 10px;
+}
 
-  .ticket-info {
-    padding: 10px;
-  }
-
-  .ticket-details table td {
-    padding: 8px;
-  }
-
-  footer {
-    font-size: 0.8em;
-  }
-
-  /* Ajustamos el botón para que se vea bien en móviles */
-  .etickets-button {
-    font-size: 1.2em; /* Aumentamos ligeramente el tamaño de la fuente */
-  }
-
-  /* Aseguramos que no haya desbordamiento en la pantalla */
-  body {
-    overflow-x: hidden;
-  }
+p {
+  font-size: 18px;
+  margin: 6px 0;
 }
